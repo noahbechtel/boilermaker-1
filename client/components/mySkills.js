@@ -152,16 +152,16 @@ class MySkills extends Component {
               let y = this.y - balls[j].y
 
               if (a > Math.sqrt(x * x + y * y)) {
-                if (this.size > 10) this.size--
-                if (this.font > 1) this.font--
+                if (this.size > 10) this.size -= 4
+                if (this.font > 1) this.font -= 4
               }
             }
           }
           if (this.size < this.label.length * 8 && selected === false) {
-            this.size++
+            this.size += 4
           }
 
-          if (this.font < 20 && selected === false) this.font++
+          if (this.font < 20 && selected === false) this.font += 4
         }
       }
     }
