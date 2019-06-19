@@ -2,7 +2,7 @@ export const skills = [
   { name: 'JavaScript', prof: 'Highly Proficient', type: 'Language' },
   { name: 'React', prof: 'Highly Proficient', type: 'FrameWork' },
   { name: 'Redux', prof: 'Highly Proficient', type: 'Data Delivery' },
-  { name: 'CSS', prof: 'Highly Proficient', type: 'Html Styles' },
+  { name: 'CSS ', prof: 'Highly Proficient', type: 'Html Styles' },
   { name: 'Sequelize', prof: 'Highly Proficient', type: 'Database Framework' },
   { name: 'Node', prof: 'Highly Proficient', type: 'Run-time Environment' },
   { name: 'Git', prof: 'Highly Proficient', type: 'Version Control' },

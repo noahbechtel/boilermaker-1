@@ -19,7 +19,7 @@ class MyProjects extends Component {
     }
     return (
       <div className='multicomp'>
-        <div className='title'>Projects</div>
+        <div className='title'>Some Things I've Been Working On</div>
         {this.state.mobile ? (
           <div className='tiles-mobile'>
             {projects.map(p => {

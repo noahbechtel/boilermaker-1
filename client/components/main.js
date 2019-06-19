@@ -5,10 +5,9 @@ class Main extends Component {
   constructor () {
     super()
   }
-
   render () {
     return (
-      <div>
+      <div className='page'>
         <div className='container'>
           <div className='photo'>Photo</div>
 

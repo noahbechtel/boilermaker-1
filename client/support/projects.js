@@ -18,7 +18,7 @@ export const projects = [
     url: 'https://canvasbreaker.herokuapp.com/',
     img: '/projects/CanvasBreaker.png',
     desc:
-      'A dive into using canvas as a game engine and utilizing other built-in objects'
+      'A dive into using HTML 5 Canvas as a game engine and utilizing native tilt controls'
   },
   {
     name: 'Base64Boy',
@@ -26,5 +26,12 @@ export const projects = [
     img: '/projects/base64.png',
     desc:
       'My first website, used converting and saving Base64 code popular on Reddit'
+  },
+  {
+    name: 'Vectorail',
+    url: 'https://vectorail.herokuapp.com/',
+    img: '/projects/vectorail.png',
+    desc:
+      'A simple slot car game built with PIXI.js sprites and Greensock animation library.'
   }
 ]

@@ -58,7 +58,7 @@ class MySkills extends Component {
         this.y = y
         this.velX = random(-1, 1)
         this.velY = random(-1, 1)
-        this.color = 'rgb(252, 81, 133)'
+        this.color = '#ff4949'
         this.size = skill.name.length * 8
         this.label = skill.name
         this.prof = skill.prof
@@ -83,7 +83,7 @@ class MySkills extends Component {
           ctx.arc(this.x, this.y, this.size - 10, start_angle, end_angle, false)
           ctx.closePath()
           ctx.lineWidth = 5
-          ctx.fillStyle = '#f5f5f5'
+          ctx.fillStyle = '#eeeeee'
           ctx.fill()
         }
 
@@ -97,7 +97,7 @@ class MySkills extends Component {
 
           this.velX = 0
           this.velY = 0
-          ctx.fillStyle = '#f5f5f5'
+          ctx.fillStyle = '#eeeeee'
           ctx.font = '40px myFont'
           ctx.fillText(
             this.label,
@@ -105,7 +105,7 @@ class MySkills extends Component {
             this.y - this.size / 2
           )
 
-          ctx.fillStyle = '#364f6b'
+          ctx.fillStyle = '#444444'
           ctx.font = '20px myFont'
           ctx.fillText('-' + this.prof, this.x - this.size + 40, this.y)
           ctx.fillText('-' + this.type, this.x - this.size + 40, this.y + 40)
@@ -174,7 +174,7 @@ class MySkills extends Component {
       ctx.rect(0, 0, canvas.width, canvas.height)
       ctx.closePath()
       ctx.lineWidth = 10
-      ctx.strokeStyle = '#fc5185'
+      ctx.strokeStyle = '#ff4949'
       ctx.stroke()
 
       let row = 1
@@ -212,8 +212,8 @@ class MySkills extends Component {
   render () {
     return (
       <div className='multicomp'>
-        <div className='title'>My Skills</div>
-        {/* <div className='aboutMe' ref='parent'> */}
+        <div className='title'>What I Bring to the Table</div>
+
         <canvas
           ref='canvas'
           className='canvas'
@@ -223,6 +223,9 @@ class MySkills extends Component {
           tabIndex='0'
         />
         {/* </div> */}
+        <div className='title'>
+          <br />
+        </div>
       </div>
     )
   }
