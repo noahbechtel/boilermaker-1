@@ -17,11 +17,11 @@ class MySkills extends Component {
     let balls = []
 
     const mouseDown = evt => {
-      this.setState({})
-
       const rect = canvas.getBoundingClientRect()
-      const mX = event.clientX - rect.left
-      const mY = event.clientY - rect.top
+      const mX =
+        ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width
+      const mY =
+        ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height
 
       for (let i = 0; i < balls.length; i++) {
         if (
