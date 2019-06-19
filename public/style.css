@@ -100,6 +100,8 @@ a{
     display: flex;
     margin-bottom: 5%;
     flex-flow: row wrap;
+    justify-content: space-between;
+
   }
   .tiles-mobile{
     display: flex;
@@ -126,8 +128,8 @@ a{
     position: relative;
     flex-direction: column;
     text-align: center;
-    width:47vw
-   
+    width: 44vw;
+    margin: 1%;   
   }
   .projectCap{
     position: absolute;
@@ -150,7 +152,7 @@ a{
     position: absolute;
     bottom :5%;
     left:10%;
-    font-size: 1.5ex;
+    font-size: 2.5vw;
     color: #dedede;
     background: #444444;
     opacity:0.90;
@@ -215,7 +217,7 @@ a{
 
   .launch{
     position: absolute;
-    font-size: 3ex;
+    font-size: 6vw;
     top: 30%;
     left: 10%;
     color: #eeeeee;
