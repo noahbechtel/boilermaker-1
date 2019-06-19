@@ -5,18 +5,10 @@ class MyProjects extends Component {
   constructor () {
     super()
     this.state = {
-      selected: '',
-      mobile: false
+      selected: ''
     }
   }
   render () {
-    if (
-      !window.matchMedia('(display-mode: standalone)').matches &&
-      !!navigator.platform &&
-      /iPad|iPhone|iPod/.test(navigator.platform)
-    ) {
-      this.setState({ mobile: true })
-    }
     return (
       <div className='multicomp'>
         <div className='title'>Some Things I've Been Working On</div>
