@@ -4,7 +4,11 @@ import { skills } from '../support/skills'
 class MySkills extends Component {
   constructor () {
     super()
-    this.state = { selected: false, coords: { x: 0, y: 0 }, started: false }
+    this.state = {
+      selected: false,
+      coords: { x: 0, y: 0 },
+      started: false
+    }
   }
 
   componentDidMount () {
@@ -37,8 +41,6 @@ class MySkills extends Component {
                 y: mY
               }
             })
-            let topBall = balls.slice(i, i + 1)
-            balls.splice(i, 0).splice(0, 0, topBall)
           } else {
             this.setState({ selected: false, coords: { x: 0, y: 0 } })
           }
@@ -65,13 +67,20 @@ class MySkills extends Component {
         this.type = skill.type
         this.hit = false
         this.font = 20
+        this.dropshadow = '#c10000'
       }
       draw = selected => {
+        ctx.beginPath()
+        ctx.fillStyle = this.dropshadow
+        ctx.arc(this.x + 3, this.y + 3, this.size, 0, 2 * Math.PI)
+        ctx.fill()
+        ctx.closePath()
         ctx.beginPath()
         ctx.fillStyle = this.color
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
         ctx.fill()
         ctx.closePath()
+
         const drawTextBox = () => {
           const start_degrees = 330
           const start_angle = (Math.PI / 180) * start_degrees
