@@ -36,22 +36,23 @@ class MyProjects extends Component {
                   </div>
                 </div>
               )
-            }
-            return (
-              <div
-                className='singleProject'
-                key={p.url}
-                onClick={() => {
-                  this.setState({ selected: p.name })
-                }}
-              >
-                <div>
-                  <div className='projectCap'>{p.name}</div>
-                  <div className='projectCapBack'>{'    '}</div>
-                  <img src={p.img} className='productImage' />
+            } else {
+              return (
+                <div
+                  className='singleProject'
+                  key={p.url}
+                  onClick={() => {
+                    this.setState({ selected: p.name })
+                  }}
+                >
+                  <div>
+                    <div className='projectCap'>{p.name}</div>
+                    <div className='projectCapBack'>{'    '}</div>
+                    <img src={p.img} className='productImage' />
+                  </div>
                 </div>
-              </div>
-            )
+              )
+            }
           })}
         </div>
       </div>

@@ -44,7 +44,7 @@ a{
 
 .container{
   display: flex;
-padding-bottom: 5%;
+  height:500px;
 }
 
 
@@ -69,19 +69,18 @@ padding-bottom: 5%;
 
 }
 .hello{
-  font-size: 2vw
+  font-size: 1.7em
 }
 .myTitle{
   color: #ff4949;
-  font-size: 2vw;
+  font-size: 1.7em;
 }
 .long{
   font-family: myFont;
-  font-size: 1.5vw;
+  font-size: 1.3em;
 }
 .spacer{
   height:20%;
-  color: #dedede
 }
 .text{
   width: 80%;
@@ -99,10 +98,8 @@ padding-bottom: 5%;
   }
   .tiles{
     display: flex;
-    flex-direction: row;
     margin-bottom: 5%;
-    
-   
+    flex-flow: row wrap;
   }
   .tiles-mobile{
     display: flex;
@@ -111,7 +108,7 @@ padding-bottom: 5%;
 
   .multicomp .title{
     font-family: myFont-Bold;
-    font-size: 2vw;
+    font-size: 2em;
     color: #eeeeee;
     text-align: center;
     padding-top: 20px;
@@ -129,11 +126,12 @@ padding-bottom: 5%;
     position: relative;
     flex-direction: column;
     text-align: center;
-    width: 100%;
+    width:20ex
    
   }
   .projectCap{
     position: absolute;
+    font-size: 2ex;
     bottom :10%;
     left:10%;
     color: #dedede;
@@ -141,8 +139,7 @@ padding-bottom: 5%;
     z-index: 10;
     opacity:0.90;
     width: 80%;
-    font-family: myFont;
-    font-size: 1.5vw
+    font-family: myFont
 
   }
   .canvas{
@@ -153,7 +150,7 @@ padding-bottom: 5%;
     position: absolute;
     bottom :5%;
     left:10%;
-    font-size: 1vw;
+    font-size: 1.5ex;
     color: #dedede;
     background: #444444;
     opacity:0.90;
@@ -187,7 +184,7 @@ padding-bottom: 5%;
 
   .navigator a{
     color:#eeeeee;
-    font-size: 2vw;
+    font-size: 1.5em;
     font-family: myFont-bold;
     text-decoration: none;
     
@@ -202,7 +199,7 @@ padding-bottom: 5%;
     border-radius: 20px;
     padding: 4%;
     line-height:200%;
-    font-size: 1.5vw;
+    font-size: 20px;
     font-family: myFont-bold
 
   }
@@ -218,7 +215,7 @@ padding-bottom: 5%;
 
   .launch{
     position: absolute;
-    font-size: 2.5vw;
+    font-size: 3ex;
     top: 30%;
     left: 10%;
     color: #eeeeee;
