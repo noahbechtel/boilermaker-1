@@ -4,7 +4,7 @@ import { skills } from '../support/skills'
 class MySkills extends Component {
   constructor () {
     super()
-    this.state = { selected: false, coords: { x: 0, y: 0 } }
+    this.state = { selected: false, coords: { x: 0, y: 0 }, started: false }
   }
 
   componentDidMount () {
@@ -39,6 +39,8 @@ class MySkills extends Component {
                 y: mY
               }
             })
+            let topBall = balls.slice(i, i + 1)
+            balls.splice(i, 0).splice(1, 0, topBall)
           } else {
             this.setState({ selected: false, coords: { x: 0, y: 0 } })
           }
@@ -179,7 +181,8 @@ class MySkills extends Component {
       let row = 1
       let column = 1
       let lab = 0
-      if (balls.length < 1) {
+
+      if (!this.state.started) {
         for (let i = 0; i < skills.length; i++) {
           if (row > 5) {
             row = 1
@@ -192,6 +195,7 @@ class MySkills extends Component {
           lab++
           row++
         }
+        this.setState({ started: true })
       }
 
       for (let i = 0; i < balls.length; i++) {
