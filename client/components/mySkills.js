@@ -23,8 +23,6 @@ class MySkills extends Component {
       const mX = event.clientX - rect.left
       const mY = event.clientY - rect.top
 
-      console.log('x: ' + mX + ' y: ' + mY)
-
       for (let i = 0; i < balls.length; i++) {
         if (
           mX >= balls[i].x - balls[i].size &&
@@ -40,7 +38,7 @@ class MySkills extends Component {
               }
             })
             let topBall = balls.slice(i, i + 1)
-            balls.splice(i, 0).splice(1, 0, topBall)
+            balls.splice(i, 0).splice(0, 0, topBall)
           } else {
             this.setState({ selected: false, coords: { x: 0, y: 0 } })
           }
@@ -91,7 +89,7 @@ class MySkills extends Component {
 
         if (selected === this.label) {
           if (this.size < bigBubbleSize) {
-            this.size = this.size + 4
+            this.size += 4
 
             drawTextBox()
           }
@@ -148,22 +146,23 @@ class MySkills extends Component {
 
         if (this.label !== selected) {
           for (let j = 0; j < balls.length; j++) {
-            if (balls[j].label === selected) {
-              let a = this.size + balls[j].size
-              let x = this.x - balls[j].x
-              let y = this.y - balls[j].y
+            let a = this.size + balls[j].size
+            let x = this.x - balls[j].x
+            let y = this.y - balls[j].y
 
+            if (balls[j].label === selected) {
               if (a > Math.sqrt(x * x + y * y)) {
-                if (this.size > 10) this.size -= 4
-                if (this.font > 1) this.font -= 4
+                if (this.size > 10) this.size--
+                if (this.font > 1) this.font -= 0.5
+              } else {
+                if (this.size < this.label.length * 8) this.size++
+                if (this.font < 20) this.font += 0.5
               }
+            } else if (selected === false) {
+              if (this.size < this.label.length * 8) this.size++
+              if (this.font < 20) this.font += 0.5
             }
           }
-          if (this.size < this.label.length * 8 && selected === false) {
-            this.size += 4
-          }
-
-          if (this.font < 20 && selected === false) this.font += 4
         }
       }
     }
