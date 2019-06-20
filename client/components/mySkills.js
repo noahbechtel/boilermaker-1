@@ -7,7 +7,8 @@ class MySkills extends Component {
     this.state = {
       selected: false,
       coords: { x: 0, y: 0 },
-      started: false
+      started: false,
+      top: null
     }
   }
 
@@ -34,12 +35,14 @@ class MySkills extends Component {
           (mY >= balls[i].y - balls[i].size && mY <= balls[i].y + balls[i].size)
         ) {
           if (this.state.selected !== balls[i].label) {
+            let top = balls[i]
             this.setState({
               selected: balls[i].label,
               coords: {
                 x: mX,
                 y: mY
-              }
+              },
+              top: top
             })
           } else {
             this.setState({ selected: false, coords: { x: 0, y: 0 } })
@@ -205,12 +208,17 @@ class MySkills extends Component {
         }
         this.setState({ started: true })
       }
-
+      if (this.state.top) {
+        this.state.top.draw(this.state.selected)
+      }
       for (let i = 0; i < balls.length; i++) {
         // balls[i].collisionDetect(this.state.selected)
         balls[i].draw(this.state.selected)
         balls[i].update(this.state)
         // balls[i].handleClick(this.state.coords.x, this.state.coords.y)
+      }
+      if (this.state.top) {
+        this.state.top.draw(this.state.selected)
       }
 
       requestAnimationFrame(loop)
