@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 
 const AboutMe = () => {
   return (
-    <div className='multicomp'>
-      <div className='title'>Who I Am</div>
-      <div className='aboutMe'>
+    <div id='multicomp'>
+      <h1>
+        <p>Who I Am</p>
+      </h1>
+      <div id='aboutMe'>
         I was born and raised outside of Columbia, Missouri. I grew up with a
         love for coding, starting with Scratch and then tinkering with Rasberry
         Pis and Arduino. There were not many outlets for my passion in my small

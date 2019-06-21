@@ -8,10 +8,14 @@ class MySkills extends Component {
       selected: false,
       coords: { x: 0, y: 0 },
       started: false,
-      top: null
+      top: null,
+      organized: false
     }
   }
-
+  handleClick = () => {
+    const organized = !this.state.organized
+    this.setState({ organized, selected: false, top: null })
+  }
   componentDidMount () {
     const bigBubbleSize = 150
     const canvas = this.refs.canvas
@@ -23,29 +27,58 @@ class MySkills extends Component {
 
     const mouseDown = evt => {
       const rect = canvas.getBoundingClientRect()
-      const mX =
-        ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width
-      const mY =
-        ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height
 
-      for (let i = 0; i < balls.length; i++) {
-        if (
-          mX >= balls[i].x - balls[i].size &&
-          mX <= balls[i].x + balls[i].size &&
-          (mY >= balls[i].y - balls[i].size && mY <= balls[i].y + balls[i].size)
-        ) {
-          if (this.state.selected !== balls[i].label) {
-            let top = balls[i]
-            this.setState({
-              selected: balls[i].label,
-              coords: {
-                x: mX,
-                y: mY
-              },
-              top: top
-            })
-          } else {
-            this.setState({ selected: false, coords: { x: 0, y: 0 } })
+      if (this.state.organized) {
+        for (let i = 0; i < balls.length; i++) {
+          const ball = balls[i]
+          const mX =
+            ((evt.clientX - rect.left) / (rect.right - rect.left)) *
+            canvas.width
+          const mY =
+            ((evt.clientY - rect.top) / (rect.bottom - rect.top)) *
+            canvas.height
+          if (
+            mX >= ball.x &&
+            mX <= ball.x + ball.width &&
+            (mY >= ball.y && mY <= ball.y + ball.height)
+          ) {
+            if (this.state.selected !== ball.label) {
+              this.setState({
+                selected: ball.label,
+                coords: {
+                  x: mX,
+                  y: mY
+                }
+              })
+            } else {
+              this.setState({ selected: false, coords: { x: 0, y: 0 } })
+            }
+          }
+        }
+      } else {
+        const mX =
+          ((evt.clientX - rect.left) / (rect.right - rect.left)) * canvas.width
+        const mY =
+          ((evt.clientY - rect.top) / (rect.bottom - rect.top)) * canvas.height
+        for (let i = 0; i < balls.length; i++) {
+          const ball = balls[i]
+          if (
+            mX >= ball.x - ball.size &&
+            mX <= ball.x + ball.size &&
+            (mY >= ball.y - ball.size && mY <= ball.y + ball.size)
+          ) {
+            if (this.state.selected !== ball.label) {
+              this.setState({
+                selected: balls[i].label,
+                coords: {
+                  x: mX,
+                  y: mY
+                },
+                top: ball
+              })
+            } else {
+              this.setState({ selected: false, coords: { x: 0, y: 0 } })
+            }
           }
         }
       }
@@ -64,13 +97,16 @@ class MySkills extends Component {
         this.velX = random(-1, 1)
         this.velY = random(-1, 1)
         this.color = '#ff4949'
-        this.size = skill.name.length * 8
+        this.dropshadow = '#c10000'
+        this.permSize = Math.round(skill.name.length * (canvas.width / 120))
+        this.size = 0
         this.label = skill.name
         this.prof = skill.prof
         this.type = skill.type
-        this.hit = false
-        this.font = 20
-        this.dropshadow = '#c10000'
+        this.height = 0
+        this.width = 0
+        this.permFont = Math.round(2 * (canvas.width / 100))
+        this.font = 0
       }
       draw = selected => {
         ctx.beginPath()
@@ -101,7 +137,7 @@ class MySkills extends Component {
 
         if (selected === this.label) {
           if (this.size < bigBubbleSize) {
-            this.size += 4
+            this.size += 1
 
             drawTextBox()
           }
@@ -129,11 +165,84 @@ class MySkills extends Component {
             this.velX = random(-1, 1)
             this.velY = random(-1, 1)
           }
-          if (this.size > this.label.length * 8) {
-            this.size -= 4
+          if (this.size > this.permSize) {
+            this.size -= 1
           }
         }
       }
+
+      drawOrg = selected => {
+        if (this.label !== selected) {
+          this.height = this.permFont + 20
+          this.width = this.size * 2
+
+          ctx.beginPath()
+          ctx.fillStyle = this.dropshadow
+          ctx.rect(this.x + 5, this.y + 5, this.width, this.height)
+          ctx.fill()
+          ctx.closePath()
+
+          ctx.beginPath()
+          ctx.fillStyle = this.color
+          ctx.rect(this.x, this.y, this.width, this.height)
+          ctx.fill()
+          ctx.closePath()
+
+          ctx.fillStyle = '#f5f5f5'
+          ctx.font = this.font + 'px myFont'
+          ctx.fillText(this.label, this.x + 20, this.y + this.font + 15)
+
+          return { x: this.width + 15, y: 0 }
+        } else {
+          this.height = this.permFont * 6
+          if (
+            Math.round(this.prof.length * (canvas.width / 120)) * 2 >
+            Math.round(this.type.length * (canvas.width / 120)) * 2
+          ) {
+            this.width = Math.round(this.prof.length * (canvas.width / 120)) * 2
+          } else {
+            this.width = Math.round(this.type.length * (canvas.width / 120)) * 2
+          }
+
+          ctx.beginPath()
+          ctx.fillStyle = this.dropshadow
+          ctx.rect(this.x + 5, this.y + 5, this.width, this.height)
+          ctx.fill()
+          ctx.closePath()
+
+          ctx.beginPath()
+          ctx.fillStyle = this.color
+          ctx.rect(this.x, this.y, this.width, this.height)
+          ctx.fill()
+          ctx.closePath()
+
+          ctx.beginPath()
+          ctx.fillStyle = '#f5f5f5'
+          ctx.rect(
+            this.x + 10,
+            this.y + this.font + 35,
+            this.width - 20,
+            this.height - this.font - 45
+          )
+          ctx.fill()
+          ctx.closePath()
+
+          ctx.fillStyle = '#f5f5f5'
+          ctx.font = this.font + 'px myFont'
+          ctx.fillText(this.label, this.x + 20, this.y + this.font + 15)
+
+          ctx.fillStyle = '#444444'
+          ctx.font = this.font - 5 + 'px myFont'
+          ctx.fillText('-' + this.prof, this.x + 20, this.y + this.font + 70)
+
+          ctx.fillStyle = '#444444'
+          ctx.font = this.font - 5 + 'px myFont'
+          ctx.fillText('-' + this.type, this.x + 20, this.y + this.font + 100)
+
+          return { x: this.width + 15, y: this.height }
+        }
+      }
+
       update = state => {
         const selected = state.selected
 
@@ -156,7 +265,7 @@ class MySkills extends Component {
         this.x += this.velX
         this.y += this.velY
 
-        if (this.label !== selected) {
+        if (this.label !== selected && !this.organized) {
           for (let j = 0; j < balls.length; j++) {
             let a = this.size + balls[j].size
             let x = this.x - balls[j].x
@@ -167,12 +276,17 @@ class MySkills extends Component {
                 if (this.size > 10) this.size--
                 if (this.font > 1) this.font -= 0.5
               } else {
-                if (this.size < this.label.length * 8) this.size++
-                if (this.font < 20) this.font += 0.5
+                if (this.size < this.permSize) {
+                  this.size++
+                }
+                if (this.font < this.permFont) this.font += 0.5
               }
-            } else if (selected === false) {
-              if (this.size < this.label.length * 8) this.size++
-              if (this.font < 20) this.font += 0.5
+            }
+            if (selected === false) {
+              if (this.size < this.permSize) {
+                this.size++
+              }
+              if (this.font < this.permFont) this.font += 0.5
             }
           }
         }
@@ -189,11 +303,11 @@ class MySkills extends Component {
       ctx.strokeStyle = '#ff4949'
       ctx.stroke()
 
-      let row = 1
-      let column = 1
-      let lab = 0
+      const setup = () => {
+        let row = 1
+        let column = 1
+        let lab = 0
 
-      if (!this.state.started) {
         for (let i = 0; i < skills.length; i++) {
           if (row > 5) {
             row = 1
@@ -208,40 +322,77 @@ class MySkills extends Component {
         }
         this.setState({ started: true })
       }
-      if (this.state.top) {
-        this.state.top.draw(this.state.selected)
+
+      const organize = () => {
+        let row = 20
+        let column = 20
+        let add = 0
+
+        for (let i = 0; i < balls.length; i++) {
+          const ball = balls[i]
+          if (row >= canvas.width - balls[i].size * 2) {
+            row = 20
+            column += add || 45
+            column += 15
+            add = 0
+          }
+
+          ball.x = row
+          ball.y = column
+          let result = ball.drawOrg(this.state.selected)
+
+          row += result.x
+          add += result.y
+        }
       }
-      for (let i = 0; i < balls.length; i++) {
-        // balls[i].collisionDetect(this.state.selected)
-        balls[i].draw(this.state.selected)
-        balls[i].update(this.state)
-        // balls[i].handleClick(this.state.coords.x, this.state.coords.y)
+
+      if (!this.state.started && !this.state.organized) {
+        setup()
       }
+
       if (this.state.top) {
         this.state.top.draw(this.state.selected)
       }
 
+      for (let i = 0; i < balls.length; i++) {
+        if (!this.state.organized) {
+          balls[i].draw(this.state.selected)
+          balls[i].update(this.state)
+          if (this.state.top) {
+            this.state.top.draw(this.state.selected)
+          }
+        } else {
+          organize()
+        }
+      }
+
       requestAnimationFrame(loop)
     }
+
     loop()
   }
 
   render () {
     return (
-      <div className='multicomp'>
-        <div className='title'>What I Bring to the Table</div>
+      <div id='multicomp'>
+        <h1>
+          <p>What I Bring to the Table</p>
+        </h1>
 
         <canvas
           ref='canvas'
-          className='canvas'
+          id='canvas'
           width={screen.width}
           height={600}
           onKeyPress={this.keyPress}
           tabIndex='0'
         />
-        {/* </div> */}
-        <div className='title'>
-          <br />
+        <div>
+          <div id='mulicomp'>
+            <div id='navigator'>
+              <a onClick={this.handleClick}>Organize</a>
+            </div>
+          </div>
         </div>
       </div>
     )

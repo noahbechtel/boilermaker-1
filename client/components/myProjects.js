@@ -10,21 +10,20 @@ class MyProjects extends Component {
   }
   render () {
     return (
-      <div className='multicomp'>
-        <div className='title'>Some Things I've Been Working On</div>
+      <div id='multicomp'>
+        <h1>
+          <p>Some Things I've Been Working On</p>
+        </h1>
 
-        <div className='tiles'>
+        <div id='projects'>
           {projects.map(p => {
             if (p.name === this.state.selected) {
               return (
-                <div className='singleProject' key={p.url}>
-                  <div>
-                    <img src={p.img} className='productImage' />
-                    <a href={p.url} className='launchbody'>
-                      <div className='launch'>Launch</div>
-                    </a>
-                    <div className='projectCap-selected'>{p.desc}</div>
-                    <div className='projectCapBack'>{'    '}</div>
+                <div key={p.url}>
+                  <div className='singleProject'>
+                    <img src={p.img} />
+                    <a href={p.url}>Launch</a>
+                    <h1>{p.desc}</h1>
                   </div>
                 </div>
               )
@@ -38,9 +37,8 @@ class MyProjects extends Component {
                   }}
                 >
                   <div>
-                    <div className='projectCap'>{p.name}</div>
-                    <div className='projectCapBack'>{'    '}</div>
-                    <img src={p.img} className='productImage' />
+                    <img src={p.img} />
+                    <h2>{p.name}</h2>
                   </div>
                 </div>
               )

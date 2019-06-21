@@ -14,12 +14,12 @@ font-style: normal;
   font-weight: bold;
 font-style: normal;
 }
-@font-face {
+/* @font-face {
   font-family: 'myFont-UltraBold';
   src: url('ultraFont-Bold.ttf') format('truetype');
   font-weight: bold;
 font-style: normal;
-}
+} */
 @font-face {
   font-family: 'myFont-Ultra';
   src: url('ultraFont.ttf') format('truetype');
@@ -32,60 +32,58 @@ font-family: myFont-Ultra;
 background: #eeeeee;
 color:#444444;
 text-align: center;
-margin-left: 3%;
-  margin-right:3%;
+margin-left: 10%;
+  margin-right:10%;
 }
 
-
-
-a{
-  color: #eeeeee
-}
-
-.container{
-  display: flex;
-  height:500px;
-}
-
-
-.caption{
-  align-items: center;
-  display: flex;
-  flex-direction: column;
+h1{
+  font-family: myFont-Bold;
+  font-size: 2em;
+  color: #eeeeee;
   text-align: center;
-  width:30em;
-}
-.photo{
-  width:50%
-}
+  padding-top: 20px;
+  padding-bottom: 20px;
 
-.multicomp{
-  background:#ff4949;
-  height:100%;
-  margin-top: 10px;
-  border-radius: 20px;
-  box-shadow:0px 5px 0px #c10000;
   
+}
+h1 p {
+  position: relative;
 
-}
-.hello{
-  font-size: 1.7em
-}
-.myTitle{
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #eeeeee;
   color: #ff4949;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: .1%;
+  padding-bottom: .1%;
+  cursor: pointer;
+  box-shadow:0px -3px 0px #dededede;
+  /* margin-top:3%; */
+  margin-bottom:0%
+}
+
+h2{
   font-size: 1.7em;
 }
-.long{
+.red{
+  color: #ff4949;
+}
+h3{
   font-family: myFont;
   font-size: 1.3em;
 }
-.spacer{
-  height:20%;
+
+a{
+  color:#eeeeee;
+  font-size: 1.5em;
+  font-family: myFont-bold;
+  text-decoration: none;
+  cursor: pointer;
+  
+
 }
-.text{
-  width: 80%;
-}
-.line{
+span{
   width: 20%;
   height: 2px;
   margin-left: auto;
@@ -96,133 +94,160 @@ a{
   margin-bottom: 20px;
 
   }
-  .tiles{
+
+#header{
+  display: flex;
+  height:500px;
+}
+
+#header div{
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width:50%
+}
+
+#multicomp{
+  background:#ff4949;
+  height:100%;
+  margin-top: 10px;
+  border-radius: 20px;
+  box-shadow:0px 5px 0px #c10000;
+  
+
+}
+#navigator{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  border-radius: 20px;
+  background-color: #ff4949;
+  padding-top: 2%;
+  padding-bottom: 2%;
+  box-shadow:0px 5px 0px #c10000;  
+}
+
+#navigator a{
+  position: relative;
+  /* display:flex; */
+  /* flex-direction: row; */
+  /* justify-content: space-evenly; */
+  display: inline-block;
+  border-radius: 20px;
+  background-color: #eeeeee;
+  color: #ff4949;
+  padding-left: 3%;
+  padding-right: 3%;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  cursor: pointer;
+  box-shadow:0px 6px 0px #dededede;
+  margin-top:0%;
+  margin-bottom:0%
+}
+
+
+
+#navigator a:hover {
+	box-shadow: 0 4px #dededede;
+-webkit-transform: translate(0, 4px);
+-moz-transform: translate(0, 4px);
+transform: translate(0, 2px);
+}
+
+#navigator a:active {
+  box-shadow: 0 0 #ab3c3c;
+  -webkit-transform: translate(0, 6px);
+-moz-transform: translate(0, 6px);
+  transform: translate(0, 6px);
+}
+
+#aboutMe{
+  margin-bottom: 3%;
+  margin-left: 3%;
+  margin-right: 3%;
+  background-color: #eeeeee;
+  border-radius: 20px;
+  padding: 4%;
+  line-height:200%;
+  font-size: 20px;
+  font-family: myFont-bold;
+  box-shadow:0px -5px 0px #dededede;
+
+
+}
+
+  #projects{
     display: flex;
     margin-bottom: 5%;
     flex-flow: row wrap;
-    justify-content: space-between;
-
+    justify-content: space-evenly;
+    list-style-type: none;
   }
-  .tiles-mobile{
-    display: flex;
-    flex-direction: column;
+  #projects div{
+    margin:1%
   }
-
-  .multicomp .title{
-    font-family: myFont-Bold;
-    font-size: 2em;
-    color: #eeeeee;
-    text-align: center;
-    padding-top: 20px;
-    padding-bottom: 20px;
-  }
-  .navLink{
-    text-decoration: none;
-
+  #canvas{
+    width:100%;
   }
   
- 
-  
-
   .singleProject{
     position: relative;
     flex-direction: column;
     text-align: center;
-    width: 44vw;
-    margin: 1%;   
+    max-width: 44vw;
   }
-  .projectCap{
-    position: absolute;
-    font-size: 4.5vw;
-    bottom :10%;
-    left:10%;
-    color: #dedede;
-    background: #444444;
-    z-index: 10;
-    opacity:0.90;
-    width: 80%;
-    font-family: myFont
 
-  }
-  .canvas{
-    width:100%;
-  }
-  .projectCap-selected{
-    font-family: myFont;
-    position: absolute;
-    bottom :5%;
-    left:10%;
-    font-size: 2.5vw;
-    color: #dedede;
-    background: #444444;
-    opacity:0.90;
-    width: 80%;
-
-
-  }
- 
   .singleProject img{
+    border: #dedede;
+    border-style: solid;
+  border-width: -3px;
     width: 80%;
     height:80%;
     min-width: 80%;
     border-radius: 10px;
-    
     box-shadow:0px 7px 0px #c10000
-
   }
 
-  .navigator{
-    display:flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    border-radius: 20px;
-    background-color: #ff4949;
-    padding-top: 2%;
-    padding-bottom: 2%;
-    box-shadow:0px 5px 0px #c10000;
-    
-
-  }
-
-  .navigator a{
-    color:#eeeeee;
-    font-size: 1.5em;
-    font-family: myFont-bold;
-    text-decoration: none;
-    
-
-  }
-
-  .aboutMe{
-    margin-bottom: 3%;
-    margin-left: 3%;
-    margin-right: 3%;
-    background-color: #eeeeee;
-    border-radius: 20px;
-    padding: 4%;
-    line-height:200%;
-    font-size: 20px;
-    font-family: myFont-bold
-
-  }
-  .launchbody{
-    position: absolute;
-    top: 30%;
-    left: 6%;
-    z-index: 10;
+  .singleProject a{
     opacity: 0.90;
-    width: 80%;
+    width: 60%;
     text-decoration: none;
-  }
-
-  .launch{
     position: absolute;
-    font-size: 6vw;
+    font-size: 4vw;
     top: 30%;
-    left: 10%;
+    left: 20%;
     color: #eeeeee;
-    z-index: 10;
-    width: 90%;
     background: #444444;
   }
-
+  
+  .singleProject h1{
+    font-family: myFont;
+    position: absolute;
+    bottom :5%;
+    left:10%;
+    font-size: 2vw;
+    color: #dedede;
+    background: #444444;
+    opacity:0.90;
+    width: 80%;
+  }
+  
+  @media screen and (min-width: 1000px) {
+    .singleProject h1 {
+       font-size: 15px;
+    }
+  }
+  .singleProject h2{
+    position: absolute;
+    font-size: 3vw;
+    bottom :10%;
+    left:11%;
+    color: #dedede;
+    background: #444444;
+    z-index: 10;
+    opacity:0.90;
+    width: 78%;
+    font-family: myFont
+  }
