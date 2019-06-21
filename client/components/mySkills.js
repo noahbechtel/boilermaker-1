@@ -98,14 +98,14 @@ class MySkills extends Component {
         this.velY = random(-1, 1)
         this.color = '#ff4949'
         this.dropshadow = '#c10000'
-        this.permSize = Math.round(skill.name.length * (canvas.width / 120))
+        this.permSize = Math.round(skill.name.length * 8)
         this.size = 0
         this.label = skill.name
         this.prof = skill.prof
         this.type = skill.type
         this.height = 0
         this.width = 0
-        this.permFont = Math.round(2 * (canvas.width / 100))
+        this.permFont = 20
         this.font = 0
       }
       draw = selected => {
@@ -173,8 +173,8 @@ class MySkills extends Component {
 
       drawOrg = selected => {
         if (this.label !== selected) {
-          this.height = this.permFont + 20
-          this.width = this.size * 2
+          this.height = this.permFont * 2
+          this.width = this.size * 2.5
 
           ctx.beginPath()
           ctx.fillStyle = this.dropshadow
@@ -195,13 +195,10 @@ class MySkills extends Component {
           return { x: this.width + 15, y: 0 }
         } else {
           this.height = this.permFont * 6
-          if (
-            Math.round(this.prof.length * (canvas.width / 120)) * 2 >
-            Math.round(this.type.length * (canvas.width / 120)) * 2
-          ) {
-            this.width = Math.round(this.prof.length * (canvas.width / 120)) * 2
+          if (this.prof.length > this.type.length) {
+            this.width = (this.prof.length / 2) * this.permFont + 20
           } else {
-            this.width = Math.round(this.type.length * (canvas.width / 120)) * 2
+            this.width = (this.type.length / 2) * this.permFont + 20
           }
 
           ctx.beginPath()
@@ -233,11 +230,19 @@ class MySkills extends Component {
 
           ctx.fillStyle = '#444444'
           ctx.font = this.font - 5 + 'px myFont'
-          ctx.fillText('-' + this.prof, this.x + 20, this.y + this.font + 70)
+          ctx.fillText(
+            '-' + this.prof,
+            this.x + 20,
+            this.y + this.font + this.height / 2
+          )
 
           ctx.fillStyle = '#444444'
           ctx.font = this.font - 5 + 'px myFont'
-          ctx.fillText('-' + this.type, this.x + 20, this.y + this.font + 100)
+          ctx.fillText(
+            '-' + this.type,
+            this.x + 20,
+            this.y + this.font + this.height / 1.5
+          )
 
           return { x: this.width + 15, y: this.height }
         }
@@ -276,16 +281,14 @@ class MySkills extends Component {
                 if (this.size > 10) this.size--
                 if (this.font > 1) this.font -= 0.5
               } else {
-                if (this.size < this.permSize) {
-                  this.size++
-                }
+                if (this.size < this.permSize) this.size++
+
                 if (this.font < this.permFont) this.font += 0.5
               }
             }
             if (selected === false) {
-              if (this.size < this.permSize) {
-                this.size++
-              }
+              if (this.size < this.permSize) this.size++
+
               if (this.font < this.permFont) this.font += 0.5
             }
           }
@@ -330,7 +333,7 @@ class MySkills extends Component {
 
         for (let i = 0; i < balls.length; i++) {
           const ball = balls[i]
-          if (row >= canvas.width - balls[i].size * 2) {
+          if (row >= canvas.width - balls[i].width) {
             row = 20
             column += add || 45
             column += 15
