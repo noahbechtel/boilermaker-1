@@ -281,15 +281,10 @@ font-size: .8em;
 }
 
 #legend{
-  position: relative;
-  border-radius: 20px;
-  background-color: var(--background);
-  color: var(--primary);
-  box-shadow:0px 6px 0px var(--shadow);
-  margin: 0%;
-  display: block;
-  max-width:10em;
-  max-height:10em;
+  position: absolute;
+  right: 10vw;
+  max-width:15vw;
+  max-height:15vw;
   width: auto;
   height: auto;
 }
@@ -424,6 +419,10 @@ font-size: .8em;
    .singleProject a {
     font-size: 6vw;
     top:40%
+ }
+ #legend{
+  max-width:20vw;
+  max-height:20vw;
  }
   }
   textarea,button, input, #canvas { outline: none; }

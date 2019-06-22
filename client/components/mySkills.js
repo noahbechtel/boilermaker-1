@@ -389,21 +389,21 @@ class MySkills extends Component {
         <h1>
           <p>What I Bring to the Table</p>
         </h1>
-
-        <canvas
-          ref='canvas'
-          id='canvas'
-          width={screen.width}
-          height={600}
-          onKeyPress={this.keyPress}
-          tabIndex='0'
-        />
+        <div>
+          <canvas
+            ref='canvas'
+            id='canvas'
+            width={screen.width}
+            height={600}
+            onKeyPress={this.keyPress}
+            tabIndex='0'
+          />
+          <img id='legend' src='/legend.png' />
+        </div>
         <div>
           <div>
             <div id='navigator'>
               <a onClick={this.handleClick}>Organize</a>
-
-              <img id='legend' src='/legend.png' />
             </div>
           </div>
         </div>
