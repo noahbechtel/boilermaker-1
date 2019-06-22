@@ -384,6 +384,7 @@ class MySkills extends Component {
   }
 
   render () {
+    const organized = this.state.organized
     return (
       <div id='multicomp'>
         <h1>
@@ -398,7 +399,7 @@ class MySkills extends Component {
             onKeyPress={this.keyPress}
             tabIndex='0'
           />
-          <img id='legend' src='/legend.png' />
+          {organized ? <div /> : <img id='legend' src='/legend.png' />}
         </div>
         <div>
           <div>
