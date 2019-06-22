@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const User = require('../db/models/user')
-const Messages = require('../db/models/messages')
+const Messages = require('../db/models/message')
 
 module.exports = router
 
@@ -42,15 +42,6 @@ router.post('/logout', (req, res) => {
 
 router.get('/me', (req, res) => {
   res.json(req.user)
-})
-
-router.post('/messages', async (req, res, next) => {
-  try {
-    const { email, name, message } = req.body
-    await Messages.create({ email, name, message })
-  } catch (err) {
-    next(err)
-  }
 })
 
 router.use('/google', require('./google'))

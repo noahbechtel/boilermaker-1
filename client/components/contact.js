@@ -21,54 +21,69 @@ class Contact extends Component {
   handleSubmit = async evt => {
     const { email, message, name } = this.state
     evt.preventDefault()
-
-    try {
-      res = await axios.post(`/messages`, {
-        email,
-        name,
-        message
-      })
-      this.setState({ sent: true })
-    } catch (err) {
-      this.setState({ sent: 'err' })
+    this.setState({ sent: 'loading' })
+    if (email !== '' && message !== '') {
+      try {
+        res = await axios.post(`/api/messages`, {
+          email,
+          name,
+          message
+        })
+        this.setState({ sent: true, email: '', message: '', name: '' })
+      } catch (err) {
+        this.setState({ sent: 'err' })
+      }
     }
   }
 
   render = () => {
-    const { email, message, name } = this.state
+    const { email, message, name, sent } = this.state
     return (
       <div id='multicomp'>
-        <h1>
-          <p>Let's Get In Touch</p>
-        </h1>
-        <form onSubmit={this.handleSubmit}>
-          <div className='info'>
-            <h1>Email:</h1>
-            <input
-              onChange={this.handleChange}
-              type='email'
-              name='email'
-              value={email}
-            />
-            <h1>Name:</h1>
-            <input
-              onChange={this.handleChange}
-              type='text'
-              name='name'
-              value={name}
-            />
+        {sent ? (
+          <div>
+            <h1>
+              <p>Thank you!</p>
+            </h1>
+            <div id='aboutMe'>I'll Be in touch with you shortly!</div>
           </div>
-          <div className='message'>
-            <h1>Message:</h1>
-            <textarea
-              onChange={this.handleChange}
-              type='text'
-              name='message'
-              value={message}
-            />
+        ) : (
+          <div>
+            <h1>
+              <p>Let's Get In Touch</p>
+            </h1>
+            <form onSubmit={this.handleSubmit}>
+              <div className='info'>
+                <h1>Email:</h1>
+                <input
+                  onChange={this.handleChange}
+                  type='email'
+                  name='email'
+                  value={email}
+                />
+                <h1>Name:</h1>
+                <input
+                  onChange={this.handleChange}
+                  type='text'
+                  name='name'
+                  value={name}
+                />
+              </div>
+              <div className='message'>
+                <h1>Message:</h1>
+                <textarea
+                  onChange={this.handleChange}
+                  type='text'
+                  name='message'
+                  value={message}
+                />
+              </div>
+              <button type='submit'>
+                {sent === 'loading' ? 'Loading' : 'Send'}
+              </button>
+            </form>
           </div>
-          <button type='submit'> {this.state.sent ? 'Sent!' : 'Send'}</button>
-        </form>
+        )}
       </div>
     )
   }

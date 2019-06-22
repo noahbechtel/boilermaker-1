@@ -235,14 +235,14 @@ span{
 
 }
 
-#navigator a:hover {
+#navigator a:hover ,form button:hover {
 	box-shadow: 0 4px var(--shadow);
 -webkit-transform: translate(0, 4px);
 -moz-transform: translate(0, 4px);
 transform: translate(0, 2px);
 }
 
-#navigator a:active {
+#navigator a:active, form button:active {
   box-shadow: 0 0 var(--shadow);
   -webkit-transform: translate(0, 6px);
 -moz-transform: translate(0, 6px);

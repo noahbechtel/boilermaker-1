@@ -1,7 +1,7 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const Messages = db.define('message', {
+const Message = db.define('message', {
   email: {
     type: Sequelize.STRING,
     unique: false,
@@ -19,4 +19,4 @@ const Messages = db.define('message', {
   }
 })
 
-module.exports = Messages
+module.exports = Message
