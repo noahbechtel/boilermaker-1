@@ -407,7 +407,8 @@ font-size: .8em;
     input,textarea{
       font-size: 6vw;
       width: 100%;
-      padding: 4%;
+      padding-left: 4%;
+      padding-bottom: 10%;
       padding-right:0%
     }
   
