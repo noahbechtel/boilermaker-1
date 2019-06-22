@@ -263,8 +263,14 @@ transform: translate(0, 2px);
        width:23%;
     }
     h1 p{
-      font-size: 3vw;
+      font-size: 8vw;
+      margin: 5%;
+      padding-right: 4%;
+      padding-left: 4%;
   
+    }
+    .singleProject{
+      max-width: 100vw;
     }
     .singleProject h1 {
       font-size: 0px;
