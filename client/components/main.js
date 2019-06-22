@@ -29,7 +29,7 @@ class Main extends Component {
               this.props.history.push('/projects')
             }}
           >
-            Projects
+            My Projects
           </a>
           <a
             onClick={() => {

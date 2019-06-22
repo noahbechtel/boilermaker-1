@@ -1,6 +1,12 @@
 import React, { Component } from 'react'
 import { skills } from '../support/skills'
 
+const colors = {
+  1: { f: '#ffc95e', b: '#d69d2c' },
+  2: { f: '#ff4949', b: '#c10000' },
+  3: { f: '#444444', b: '#353535' }
+}
+
 class MySkills extends Component {
   constructor () {
     super()
@@ -96,8 +102,8 @@ class MySkills extends Component {
         this.y = y
         this.velX = random(-1, 1)
         this.velY = random(-1, 1)
-        this.color = '#ff4949'
-        this.dropshadow = '#c10000'
+        this.color = colors[skill.pri].f
+        this.dropshadow = colors[skill.pri].b
         this.permSize = Math.round(skill.name.length * 8)
         this.size = 0
         this.label = skill.name
@@ -174,8 +180,8 @@ class MySkills extends Component {
       drawOrg = selected => {
         if (this.label !== selected) {
           this.height = this.permFont * 2
-          this.width = this.size * 2.5
-
+          this.width = this.permSize * 2.5
+          this.size = this.permSize
           ctx.beginPath()
           ctx.fillStyle = this.dropshadow
           ctx.rect(this.x + 5, this.y + 5, this.width, this.height)
@@ -189,11 +195,12 @@ class MySkills extends Component {
           ctx.closePath()
 
           ctx.fillStyle = '#f5f5f5'
-          ctx.font = this.font + 'px myFont'
-          ctx.fillText(this.label, this.x + 20, this.y + this.font + 15)
+          ctx.font = this.permFont + 'px myFont'
+          ctx.fillText(this.label, this.x + 20, this.y + this.permFont + 15)
 
           return { x: this.width + 15, y: 0 }
         } else {
+          this.size = this.permSize
           this.height = this.permFont * 6
           if (this.prof.length > this.type.length) {
             this.width = (this.prof.length / 2) * this.permFont + 20
@@ -217,31 +224,31 @@ class MySkills extends Component {
           ctx.fillStyle = '#f5f5f5'
           ctx.rect(
             this.x + 10,
-            this.y + this.font + 35,
+            this.y + this.permFont + 35,
             this.width - 20,
-            this.height - this.font - 45
+            this.height - this.permFont - 45
           )
           ctx.fill()
           ctx.closePath()
 
           ctx.fillStyle = '#f5f5f5'
-          ctx.font = this.font + 'px myFont'
-          ctx.fillText(this.label, this.x + 20, this.y + this.font + 15)
+          ctx.font = this.permFont + 'px myFont'
+          ctx.fillText(this.label, this.x + 20, this.y + this.permFont + 15)
 
           ctx.fillStyle = '#444444'
-          ctx.font = this.font - 5 + 'px myFont'
+          ctx.font = this.permFont - 5 + 'px myFont'
           ctx.fillText(
             '-' + this.prof,
             this.x + 20,
-            this.y + this.font + this.height / 2
+            this.y + this.permFont + this.height / 2
           )
 
           ctx.fillStyle = '#444444'
-          ctx.font = this.font - 5 + 'px myFont'
+          ctx.font = this.permFont - 5 + 'px myFont'
           ctx.fillText(
             '-' + this.type,
             this.x + 20,
-            this.y + this.font + this.height / 1.5
+            this.y + this.permFont + this.height / 1.5
           )
 
           return { x: this.width + 15, y: this.height }
