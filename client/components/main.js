@@ -45,13 +45,13 @@ class Main extends Component {
           >
             My Skills
           </a>
-          {/* <a
+          <a
             onClick={() => {
               this.props.history.push('/contact')
             }}
           >
             Hire Me
-          </a> */}
+          </a>
         </div>
       </div>
     )

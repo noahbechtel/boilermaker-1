@@ -4,6 +4,7 @@ import Main from './components/main'
 import MyProjects from './components/myProjects'
 import MySkills from './components/mySkills'
 import AboutMe from './components/aboutMe'
+import Contact from './components/contact'
 
 class Routes extends Component {
   render () {
@@ -13,6 +14,7 @@ class Routes extends Component {
         <Route exact path='/projects' component={MyProjects} />
         <Route exact path='/skills' component={MySkills} />
         <Route exact path='/about' component={AboutMe} />
+        <Route exact path='/contact' component={Contact} />
       </div>
     )
   }

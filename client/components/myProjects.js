@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { projects } from '../support/projects'
+import Github from './github'
 
 class MyProjects extends Component {
   constructor () {
@@ -45,6 +46,7 @@ class MyProjects extends Component {
             }
           })}
         </div>
+        <Github />
       </div>
     )
   }

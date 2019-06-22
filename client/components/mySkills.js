@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { skills } from '../support/skills'
+import GitHub from './github'
 
 const colors = {
   1: { f: '#ffc95e', b: '#d69d2c' },
@@ -398,9 +399,11 @@ class MySkills extends Component {
           tabIndex='0'
         />
         <div>
-          <div id='mulicomp'>
+          <div>
             <div id='navigator'>
               <a onClick={this.handleClick}>Organize</a>
+
+              <img id='legend' src='/legend.png' />
             </div>
           </div>
         </div>
