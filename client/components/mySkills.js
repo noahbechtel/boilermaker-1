@@ -3,8 +3,8 @@ import { skills } from '../support/skills'
 import GitHub from './github'
 
 const colors = {
-  1: { f: '#ffc95e', b: '#d69d2c' },
-  2: { f: '#ff4949', b: '#c10000' },
+  1: { f: '#9fd3c7', b: '#eeeeee' },
+  2: { f: '#385170', b: '#eeeeee' },
   3: { f: '#444444', b: '#353535' }
 }
 
@@ -116,11 +116,11 @@ class MySkills extends Component {
         this.font = 0
       }
       draw = selected => {
-        ctx.beginPath()
-        ctx.fillStyle = this.dropshadow
-        ctx.arc(this.x + 3, this.y + 3, this.size, 0, 2 * Math.PI)
-        ctx.fill()
-        ctx.closePath()
+        // ctx.beginPath()
+        // ctx.fillStyle = this.dropshadow
+        // ctx.arc(this.x + 3, this.y + 3, this.size, 0, 2 * Math.PI)
+        // ctx.fill()
+        // ctx.closePath()
         ctx.beginPath()
         ctx.fillStyle = this.color
         ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI)
@@ -153,7 +153,7 @@ class MySkills extends Component {
           this.velX = 0
           this.velY = 0
           ctx.fillStyle = '#eeeeee'
-          ctx.font = '40px myFont'
+          ctx.font = '40px Roboto Condensed'
           ctx.fillText(
             this.label,
             this.x - this.label.length * 10,
@@ -161,12 +161,12 @@ class MySkills extends Component {
           )
 
           ctx.fillStyle = '#444444'
-          ctx.font = '20px myFont'
+          ctx.font = '20px Roboto Condensed'
           ctx.fillText('-' + this.prof, this.x - this.size + 40, this.y)
           ctx.fillText('-' + this.type, this.x - this.size + 40, this.y + 40)
         } else {
           ctx.fillStyle = '#f5f5f5'
-          ctx.font = this.font + 'px myFont'
+          ctx.font = this.font + 'px Roboto Condensed'
           ctx.fillText(this.label, this.x - this.size / 1.5, this.y + 10)
           if (this.velX === 0) {
             this.velX = random(-1, 1)
@@ -196,7 +196,7 @@ class MySkills extends Component {
           ctx.closePath()
 
           ctx.fillStyle = '#f5f5f5'
-          ctx.font = this.permFont + 'px myFont'
+          ctx.font = this.permFont + 'px Roboto Condensed'
           ctx.fillText(this.label, this.x + 20, this.y + this.permFont + 15)
 
           return { x: this.width + 15, y: 0 }
@@ -233,11 +233,11 @@ class MySkills extends Component {
           ctx.closePath()
 
           ctx.fillStyle = '#f5f5f5'
-          ctx.font = this.permFont + 'px myFont'
+          ctx.font = this.permFont + 'px Roboto Condensed'
           ctx.fillText(this.label, this.x + 20, this.y + this.permFont + 15)
 
           ctx.fillStyle = '#444444'
-          ctx.font = this.permFont - 5 + 'px myFont'
+          ctx.font = this.permFont - 5 + 'px Roboto Condensed'
           ctx.fillText(
             '-' + this.prof,
             this.x + 20,
@@ -245,7 +245,7 @@ class MySkills extends Component {
           )
 
           ctx.fillStyle = '#444444'
-          ctx.font = this.permFont - 5 + 'px myFont'
+          ctx.font = this.permFont - 5 + 'px Roboto Condensed'
           ctx.fillText(
             '-' + this.type,
             this.x + 20,
@@ -305,14 +305,11 @@ class MySkills extends Component {
     }
 
     const loop = () => {
-      ctx.fillStyle = 'rgb(245, 245, 245)'
+      ctx.fillStyle = '#FFFFFF'
       ctx.fillRect(0, 0, width, height)
-      ctx.beginPath()
-      ctx.rect(0, 0, canvas.width, canvas.height)
-      ctx.closePath()
-      ctx.lineWidth = 10
-      ctx.strokeStyle = '#ff4949'
-      ctx.stroke()
+      // ctx.beginPath()
+      // ctx.rect(0, 0, canvas.width, canvas.height)
+      // ctx.closePath()
 
       const setup = () => {
         let row = 1
@@ -403,9 +400,10 @@ class MySkills extends Component {
         </div>
         <div>
           <div>
-            <div id='navigator'>
+            <h1>
               <a onClick={this.handleClick}>Organize</a>
-            </div>
+            </h1>
+            <span />
           </div>
         </div>
       </div>

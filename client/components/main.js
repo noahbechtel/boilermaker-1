@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import MyProjects from './myProjects'
+import MySkills from './mySkills'
+import AboutMe from './aboutMe'
+import Contact from './contact'
+import { projects } from '../support/projects'
 
 class Main extends Component {
   constructor () {
@@ -8,51 +13,24 @@ class Main extends Component {
   render () {
     return (
       <div>
-        <div id='header'>
-          <div className='photo'>Photo</div>
-
-          <div className='caption'>
-            <span />
-
-            <h2>Hi, I'm Noah </h2>
-            <h2 className='red'>I am a fullstack JavaScript Developer</h2>
-            <h3>
-              I specialize in Web App development primarily using React and
-              Redux. Have a look at a few of my projects.
-            </h3>
-            <span />
+        {/* <img id='wallpaper' src='/background.jpeg' /> */}
+        <div id='nav'>
+          <a>Projects</a>
+          <a>About</a>
+          <a>Skills</a>
+          <a>Contact</a>
+        </div>
+        <div id='body'>
+          <div id='header'>
+            <h1 id='name'>Noah Bechtel</h1>
+            <h2 id='caption'>I am a fullstack JavaScript Developer.</h2>
+            <a>Check Me Out</a>
           </div>
         </div>
-        <div id='navigator'>
-          <a
-            onClick={() => {
-              this.props.history.push('/projects')
-            }}
-          >
-            My Projects
-          </a>
-          <a
-            onClick={() => {
-              this.props.history.push('/about')
-            }}
-          >
-            About Me
-          </a>
-          <a
-            onClick={() => {
-              this.props.history.push('/skills')
-            }}
-          >
-            My Skills
-          </a>
-          <a
-            onClick={() => {
-              this.props.history.push('/contact')
-            }}
-          >
-            Hire Me
-          </a>
-        </div>
+        <MyProjects />
+        <MySkills />
+        <AboutMe />
+        <Contact />
       </div>
     )
   }

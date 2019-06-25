@@ -24,15 +24,17 @@ class Contact extends Component {
     this.setState({ sent: 'loading' })
     if (email !== '' && message !== '') {
       try {
-        res = await axios.post(`/api/messages`, {
+        await axios.post(`/api/messages`, {
           email,
           name,
           message
         })
-        this.setState({ sent: true, email: '', message: '', name: '' })
       } catch (err) {
-        this.setState({ sent: 'err' })
+        this.setState({ sent: false })
       }
+      this.setState({ sent: 'sent', email: '', message: '', name: '' })
+    } else {
+      this.setState({ sent: 'Please Fill Contact Fields' })
     }
   }
 
@@ -40,28 +42,26 @@ class Contact extends Component {
     const { email, message, name, sent } = this.state
     return (
       <div id='multicomp'>
-        {sent ? (
-          <div>
-            <h1>
-              <p>Thank you!</p>
-            </h1>
-            <div id='aboutMe'>I'll Be in touch with you shortly!</div>
+        {sent === 'sent' ? (
+          <div className='form'>
+            <div className='thanks'>
+              <h1>Thank you!</h1>
+              <div id='aboutMe'>I'll Be in touch with you shortly!</div>
+            </div>
           </div>
         ) : (
-          <div>
-            <h1>
-              <p>Let's Get In Touch</p>
-            </h1>
+          <div className='form'>
+            <h1>Let's Get In Touch</h1>
             <form onSubmit={this.handleSubmit}>
               <div className='info'>
-                <h1>Email:</h1>
+                <p>Email</p>
                 <input
                   onChange={this.handleChange}
                   type='email'
                   name='email'
                   value={email}
                 />
-                <h1>Name:</h1>
+                <p>Name</p>
                 <input
                   onChange={this.handleChange}
                   type='text'
@@ -69,8 +69,9 @@ class Contact extends Component {
                   value={name}
                 />
               </div>
+
               <div className='message'>
-                <h1>Message:</h1>
+                <p>Message</p>
                 <textarea
                   onChange={this.handleChange}
                   type='text'
@@ -78,9 +79,7 @@ class Contact extends Component {
                   value={message}
                 />
               </div>
-              <button type='submit'>
-                {sent === 'loading' ? 'Loading' : 'Send'}
-              </button>
+              <button type='submit'>{!sent ? 'Send' : sent}</button>
             </form>
           </div>
         )}
