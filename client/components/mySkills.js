@@ -383,7 +383,7 @@ class MySkills extends Component {
   render () {
     const organized = this.state.organized
     return (
-      <div id='multicomp'>
+      <div id='skill'>
         <h1>
           <p>What I Bring to the Table</p>
         </h1>

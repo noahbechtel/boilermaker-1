@@ -9,7 +9,9 @@
   --size:@media screen
 }
 
-
+html {
+  scroll-behavior: smooth;
+ }
 
 body {
   font-family: 'Nanum Gothic', sans-serif;
@@ -88,8 +90,7 @@ form p{
   flex-direction: column
 }
 
-#multicomp{
-  
+#skill,#project,#contact{
   background-color: var(--background);
 
 }

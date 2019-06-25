@@ -15,16 +15,16 @@ class Main extends Component {
       <div>
         {/* <img id='wallpaper' src='/background.jpeg' /> */}
         <div id='nav'>
-          <a>Projects</a>
-          <a>About</a>
-          <a>Skills</a>
-          <a>Contact</a>
+          <a href='#project'>Projects</a>
+          <a href='#me'>About</a>
+          <a href='#skill'>Skills</a>
+          <a href='#contact'>Contact</a>
         </div>
         <div id='body'>
           <div id='header'>
             <h1 id='name'>Noah Bechtel</h1>
             <h2 id='caption'>I am a fullstack JavaScript Developer.</h2>
-            <a>Check Me Out</a>
+            <a href='#projects'>Check Me Out</a>
           </div>
         </div>
         <MyProjects />

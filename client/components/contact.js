@@ -41,7 +41,7 @@ class Contact extends Component {
   render = () => {
     const { email, message, name, sent } = this.state
     return (
-      <div id='multicomp'>
+      <div id='contact'>
         {sent === 'sent' ? (
           <div className='form'>
             <div className='thanks'>

@@ -8,7 +8,7 @@ class MyProjects extends Component {
   }
   render () {
     return (
-      <div id='multicomp'>
+      <div id='project'>
         <h1>Some Things I've Been Working On</h1>
 
         <div id='projects'>
